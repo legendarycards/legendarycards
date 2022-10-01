@@ -13,6 +13,7 @@ jobs:
       # When using custom domain within pages use ''.
       # Otherwise use the name of the repo and access via USERNAME.github.io/REPO.
       NEXT_PUBLIC_BASE_PATH:
+      NEXT_PUBLIC_GOOGLE_ANALYTICS: G-8J8MK29N1L
 
     steps:
     - name: Checkout

@@ -20,6 +20,9 @@ const About: NextPage<Props> = ({ siteConfig }: Props) => {
           <p className="text-lg">
             This project seeks to document all Pokemon cards published by Wizards of the Coast up until the year 2013, which have some rare or non-standard property.
             Here &apos;legendary&apos; means the cards exsistance is not widely known and may even be disputed by experts.
+            Cards that have errors from the printing process, such as ink bubbles, overlays, or cutting and processing mistakes are not included.
+            Cards that have errors from pre-printing, meaning typos and mistakes in layout are included if the error was corrected.
+            In situations where the corrected version is more rare than the error-version then this will be specified.
           </p>
           <p className="text-lg">
             This is an open source and community-driven project.

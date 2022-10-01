@@ -1,6 +1,12 @@
+export enum Set {
+  BaseFirst = 'base-first',
+  BaseShadowless = 'base-shadowless',
+  BaseUnlimited = 'base-unlimited',
+}
+
 export interface ICard {
   slug?:string;
-  date:string;
+  value:string;
 
   // Photos
   normalVersion:string;
@@ -10,4 +16,5 @@ export interface ICard {
   title:string;
   description:string;
   category:string;
+  set:Set;
 }
