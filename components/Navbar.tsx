@@ -11,8 +11,8 @@ type Props = {
 const Navbar: React.FC<Props> = (props: Props) => {
   const leftmenu = [
     {
-      label: "Home",
-      href: "/",
+      label: "About",
+      href: "/about",
       external: false,
     },
   ];
@@ -37,7 +37,7 @@ const Navbar: React.FC<Props> = (props: Props) => {
                 <div className="flex-col items-center justify-start order-1 hidden w-full md:flex md:flex-row md:justify-end md:w-auto md:order-none md:flex-1">
                   {leftmenu.map((item, index) => (
                     <Link href={item.href} key={index}>
-                      <a className="px-5 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500">
+                      <a className="leading-6 font-semibold text-slate-700 dark:text-slate-200 hover:text-sky-500 dark:hover:text-sky-400">
                         {item.label}
                       </a>
                     </Link>
@@ -45,7 +45,7 @@ const Navbar: React.FC<Props> = (props: Props) => {
                 </div>
                 <div className="flex justify-between items-center w-full md:w-auto">
                   <Link href="/">
-                    <a className="w-35 dark:hidden">
+                    <a className="relative w-35 -top-3 sm:-top-4">
                       <Image
                           src="/legendary.svg"
                           alt="Logo"
@@ -53,17 +53,6 @@ const Navbar: React.FC<Props> = (props: Props) => {
                           height="85"
                           priority={true}
                         />
-                    </a>
-                  </Link>
-                  <Link href="/">
-                    <a className="hidden w-35 dark:block">
-                      <Image
-                        src="/legendary.svg"
-                        alt="Logo"
-                        width="350"
-                        height="85"
-                        priority={true}
-                      />
                     </a>
                   </Link>
                   <Disclosure.Button
@@ -94,7 +83,7 @@ const Navbar: React.FC<Props> = (props: Props) => {
                   {rightmenu.map((item, index) => (
                     <Link href={item.href} key={index}>
                       <a
-                        className="px-5 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500"
+                        className="leading-6 font-semibold text-slate-700 dark:text-slate-200 hover:text-sky-500 dark:hover:text-sky-400"
                         target={item.external ? "_blank" : ""}
                         rel={item.external ? "noopener" : ""}>
                         {item.label}
@@ -108,7 +97,7 @@ const Navbar: React.FC<Props> = (props: Props) => {
                   {mobilemenu.map((item, index) => (
                     <Link href={item.href} key={index}>
                       <a
-                        className="px-5 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500"
+                        className="leading-6 font-semibold text-slate-700 dark:text-slate-200 hover:text-sky-500 dark:hover:text-sky-400"
                         target={item.external ? "_blank" : ""}
                         rel={item.external ? "noopener" : ""}>
                         {item.label}

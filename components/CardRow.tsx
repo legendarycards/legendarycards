@@ -59,41 +59,47 @@ const CardRow: React.FC<Props> = ({ card }: Props) => {
 
   return (
     <>
-      <div className="cursor-pointer group pb-8">
-        <div className="grid gap-10 lg:gap-10 md:grid-cols-2 ">
-          <div className={cx("relative transition-all bg-gray-100 rounded-xl dark:bg-gray-800 hover:scale-105", "aspect-square")}>
-            <Link href={`cards/${card.slug}`}>
-              <a>
-                <Image
-                  src={`${prefix}/${card.normalVersion}`}
-                  placeholder="blur"
-                  height={1005}
-                  width={720}
-                  blurDataURL={dataUrl}
-                  objectFit="cover"
-                  className="transition-all rounded-2xl"
-                />
-              </a>
-            </Link>
+      <div className="group relative rounded-xl bg-slate-900 mb-8 p-8">
+        <div className="grid gap-6 grid-cols-2 ">
+          <div>
+            <div className={cx("relative transition-all rounded-xl hover:scale-105", "aspect-square")}>
+              <Link href={`cards/${card.slug}`}>
+                <a>
+                  <Image
+                    src={`${prefix}/${card.normalVersion}`}
+                    placeholder="blur"
+                    height={1005}
+                    width={720}
+                    blurDataURL={dataUrl}
+                    objectFit="cover"
+                    className="transition-all rounded-2xl"
+                  />
+                </a>
+              </Link>
+            </div>
+            <div className="text-sm">Normal Version</div>
           </div>
-          <div className={cx("relative transition-all bg-gray-100 rounded-xl dark:bg-gray-800 hover:scale-105", "aspect-square")}>
-            <Link href={`cards/${card.slug}`}>
-              <a>
-                <Image
-                  src={`${prefix}/${card.rareVersion}`}
-                  placeholder="blur"
-                  height={1005}
-                  width={720}
-                  blurDataURL={dataUrl}
-                  objectFit="cover"
-                  className="transition-all rounded-2xl"
-                />
-              </a>
-            </Link>
+          <div>
+            <div className={cx("relative transition-all rounded-xl hover:scale-105", "aspect-square")}>
+              <Link href={`cards/${card.slug}`}>
+                <a>
+                  <Image
+                    src={`${prefix}/${card.rareVersion}`}
+                    placeholder="blur"
+                    height={1005}
+                    width={720}
+                    blurDataURL={dataUrl}
+                    objectFit="cover"
+                    className="transition-all rounded-2xl"
+                  />
+                </a>
+              </Link>
+            </div>
+            <div className="text-sm">Rare Version</div>
           </div>
         </div>
         <CategoryBadge color={card.category} />
-        <h2 className="mt-2 text-lg font-semibold tracking-normal text-brand-primary dark:text-white">
+        <h2 className="mt-2 text-lg font-semibold tracking-normal text-brand-primary dark:text-white cursor-pointer">
           <Link href={`cards/${card.slug}`}>
             <span
               className="bg-gradient-to-r from-green-200 to-green-100 dark:from-purple-800 dark:to-purple-900
@@ -110,9 +116,7 @@ const CardRow: React.FC<Props> = ({ card }: Props) => {
 
         {card.description && (
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 line-clamp-3">
-            <Link href={`cards/${card.slug}`}>
-              {card.description}
-            </Link>
+            {card.description}
           </p>
         )}
       </div>

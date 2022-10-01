@@ -19,11 +19,11 @@ const Home: NextPage<Props> = ({ cards, siteConfig }: Props) => {
       <Container>
         <div className="max-w-screen-md mx-auto ">
           <div className="text-center">
-        {cards.map((card) => (
-          <div key={card.slug}>
-            <CardRow card={card} />
-          </div>
-        ))}
+            {cards.map((card) => (
+              <div key={card.slug}>
+                <CardRow card={card} />
+              </div>
+            ))}
           </div>
         </div>
       </Container>
