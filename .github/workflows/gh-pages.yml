@@ -10,7 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      NEXT_PUBLIC_BASE_PATH: /vintagerare
+      # When using custom domain within pages use ''.
+      # Otherwise use the name of the repo and access via USERNAME.github.io/REPO.
+      NEXT_PUBLIC_BASE_PATH:
 
     steps:
     - name: Checkout
