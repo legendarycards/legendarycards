@@ -59,7 +59,7 @@ const CardRow: React.FC<Props> = ({ card }: Props) => {
 
   return (
     <>
-      <div className="cursor-pointer group">
+      <div className="cursor-pointer group pb-8">
         <div className="grid gap-10 lg:gap-10 md:grid-cols-2 ">
           <div className={cx("relative transition-all bg-gray-100 rounded-xl dark:bg-gray-800 hover:scale-105", "aspect-square")}>
             <Link href={`cards/${card.slug}`}>
