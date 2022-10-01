@@ -52,6 +52,8 @@ const CardPage: React.FC<Props> = ({ source, siteConfig, frontMatter }: Props) =
         <div className="max-w-screen-md mx-auto ">
           <div className="text-center">
             <CardRow card={frontMatter} />
+          </div>
+          <div className="card-story">
             <MDXRemote components={components} {...source} />
           </div>
         </div>

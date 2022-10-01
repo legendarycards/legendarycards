@@ -1,4 +1,23 @@
-a {
-  color: inherit;
-  text-decoration: none !important;
+blockquote {
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+p {
+  margin-bottom: 20px !important;
+}
+
+blockquote p {
+  margin-bottom: 0px !important;
+}
+
+.card-story a {  /* text-slate-700; font-semibold */
+  color: rgb(226 232 240 / var(--tw-text-opacity));
+  font-weight: 600;
+}
+
+.card-story a:hover { /* text-sky-500 */
+  color: rgb(14 165 233);
 }

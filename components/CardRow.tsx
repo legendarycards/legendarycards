@@ -59,7 +59,7 @@ const CardRow: React.FC<Props> = ({ card }: Props) => {
 
   return (
     <>
-      <div className="group relative rounded-xl bg-slate-900 mb-8 p-8">
+      <div className="group relative rounded-xl bg-slate-900 mb-8 p-8 pb-2">
         <div className="grid gap-6 grid-cols-2 ">
           <div>
             <div className={cx("relative transition-all rounded-xl hover:scale-105", "aspect-square")}>
