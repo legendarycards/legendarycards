@@ -17,6 +17,9 @@ const Home: NextPage<Props> = ({ cards, siteConfig }: Props) => {
   return (
     <Layout {...siteConfig}>
       <Container>
+        <h1 className="mt-2 mb-3 text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
+          Card List
+        </h1>
         <div className="max-w-screen-md mx-auto ">
           <div className="text-center">
             {cards.map((card) => (

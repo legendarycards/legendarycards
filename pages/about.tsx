@@ -13,9 +13,9 @@ const About: NextPage<Props> = ({ siteConfig }: Props) => {
   return (
     <Layout {...siteConfig}>
       <Container>
-        <h3 className="mt-2 mb-3 text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
+        <h1 className="mt-2 mb-3 text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
           About Legendary Cards
-        </h3>
+        </h1>
         <div className="mx-auto prose text-center dark:prose-invert mt-14">
           <p className="text-lg">
             This project seeks to document all Pokemon cards published by Wizards of the Coast up until the year 2013, which have some rare or non-standard property.
