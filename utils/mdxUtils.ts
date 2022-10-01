@@ -80,7 +80,7 @@ export function getAllCards(fields: string[]): Items []{
   // add paths for getting all cards 
   const filePaths = getCardsFilePaths();
   // get the cards from the filepaths with the needed fields sorted by date
-  const cards = filePaths.map((filePath) => getCardItems(filePath, fields)).sort((card1, card2) => card1.value > card2.value ? 1 : -1);
+  const cards = filePaths.map((filePath) => getCardItems(filePath, fields)).sort((card1, card2) => parseInt(card1.value) < parseInt(card2.value) ? 1 : -1);
   // return the available card
   return cards;
 }

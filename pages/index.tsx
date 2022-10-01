@@ -38,12 +38,14 @@ export const getStaticProps: GetStaticProps = async () => {
   const cards = getAllCards([
     'title',
     'slug',
-    'date',
+    'value',
     'description',
     'normalVersion',
     'rareVersion',
     'category',
+    'set',
   ]);
+  console.log(cards);
 
   // return the cards props
   return { props: { cards } }

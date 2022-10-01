@@ -14,7 +14,7 @@ export enum Category {
 
 export interface ICard {
   slug?:string;
-  value:string;
+  value:number;
 
   // Photos
   normalVersion:string;
