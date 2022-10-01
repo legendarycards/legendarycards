@@ -1,26 +1,21 @@
 // import link artifacts
 import Link from 'next/link';
-import Image from "next/image";
-import { cx } from "../utils/all";
 
-import { parseISO, format } from "date-fns";
-import { PhotographIcon } from "@heroicons/react/outline";
+// import { parseISO, format } from "date-fns";
+// import { PhotographIcon } from "@heroicons/react/outline";
 
 import CategoryBadge from "./CategoryBadge";
+import CardPhoto from './CardPhoto';
+import CardTitle from './CardTitle';
 
 import { ICard } from '../types/card.js';
 
-//import Thumbnail from './Thumbnail';
-
-import { prefix } from '../utils/prefix.js';
-
-// Thumbnail properties
 type Props = {
-    // Thumbnail title
     card: ICard;
+    listView: boolean;
 }
 
-const CardRow: React.FC<Props> = ({ card }: Props) => {
+const CardRow: React.FC<Props> = ({ card, listView }: Props) => {
   const dataUrl = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
 
   const additionalDetails = (
@@ -57,63 +52,18 @@ const CardRow: React.FC<Props> = ({ card }: Props) => {
     </div>
   );
 
+  // Only linkify if we are in the list view.
+  const cardLink = (listView) ? `cards/${card.slug}` : "";
+
   return (
     <>
       <div className="group relative rounded-xl bg-slate-900 mb-8 p-8 pb-2">
         <div className="grid gap-6 grid-cols-2 ">
-          <div>
-            <div className={cx("relative transition-all rounded-xl hover:scale-105", "aspect-square")}>
-              <Link href={`cards/${card.slug}`}>
-                <a>
-                  <Image
-                    src={`${prefix}/${card.normalVersion}`}
-                    placeholder="blur"
-                    height={1005}
-                    width={720}
-                    blurDataURL={dataUrl}
-                    objectFit="cover"
-                    className="transition-all rounded-2xl"
-                  />
-                </a>
-              </Link>
-            </div>
-            <div className="text-sm">Normal Version</div>
-          </div>
-          <div>
-            <div className={cx("relative transition-all rounded-xl hover:scale-105", "aspect-square")}>
-              <Link href={`cards/${card.slug}`}>
-                <a>
-                  <Image
-                    src={`${prefix}/${card.rareVersion}`}
-                    placeholder="blur"
-                    height={1005}
-                    width={720}
-                    blurDataURL={dataUrl}
-                    objectFit="cover"
-                    className="transition-all rounded-2xl"
-                  />
-                </a>
-              </Link>
-            </div>
-            <div className="text-sm">Rare Version</div>
-          </div>
+          <CardPhoto href={cardLink} src={card.normalVersion} subtext="Normal Version" />
+          <CardPhoto href={cardLink} src={card.rareVersion} subtext="Rare Version" />
         </div>
         <CategoryBadge color={card.category} />
-        <h2 className="mt-2 text-lg font-semibold tracking-normal text-brand-primary dark:text-white cursor-pointer">
-          <Link href={`cards/${card.slug}`}>
-            <span
-              className="bg-gradient-to-r from-green-200 to-green-100 dark:from-purple-800 dark:to-purple-900
-                bg-[length:0px_10px]
-                bg-left-bottom
-                bg-no-repeat
-                transition-[background-size]
-                duration-500
-                hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px]">
-              {card.title}
-            </span>
-          </Link>
-        </h2>
-
+        <CardTitle href={cardLink} titleText={card.title} />
         {card.description && (
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 line-clamp-3">
             {card.description}

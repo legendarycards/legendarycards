@@ -1,23 +1,23 @@
 import { cx } from "../utils/all";
+import { Category } from "../types/card";
 
 type Props = {
   color: string,
 }
 
+let ColorMap = new Map<Category, string>([
+  [Category.Mythical, "text-pink-600"],
+  [Category.Legendary, "text-orange-700"],
+  [Category.Epic, "text-purple-600"],
+  [Category.Rare, "text-blue-600"],
+  [Category.Uncommon, "text-emerald-700"],
+]);
+
 const CategoryBadge: React.FC<Props> = (props: Props) => {
-  const color = {
-    mythical: "text-emerald-700",
-    blue: "text-blue-600",
-    orange: "text-orange-700",
-    purple: "text-purple-600",
-    pink: "text-pink-600"
-  };
+  const color = ColorMap.get(props.color as Category);
+
   return (
-    <span
-      className={cx(
-        "inline-block mt-5 text-xs font-medium tracking-wider uppercase ",
-        color[props.color as keyof typeof color] || color["pink"]
-      )}>
+    <span className={cx("inline-block mt-5 text-xs font-medium tracking-wider uppercase ", color)}>
       {props.color}
     </span>
   );

@@ -4,6 +4,14 @@ export enum Set {
   BaseUnlimited = 'base-unlimited',
 }
 
+export enum Category {
+  Mythical = 'mythical',
+  Legendary = 'legendary',
+  Epic = 'epic',
+  Rare = 'rare',
+  Uncommon = 'uncommon',
+}
+
 export interface ICard {
   slug?:string;
   value:string;
@@ -15,6 +23,6 @@ export interface ICard {
   // Metadata
   title:string;
   description:string;
-  category:string;
+  category:Category;
   set:Set;
 }

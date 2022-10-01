@@ -11,6 +11,7 @@ import { ParsedUrlQuery } from 'querystring';
 
 import Layout from '../../components/Layout';
 import Container from '../../components/Container';
+import BackButton from '../../components/BackButton';
 
 // import Prerequisites from '../../components/Prerequisites';
 // import Stacks from '../../components/Stacks';
@@ -51,7 +52,8 @@ const CardPage: React.FC<Props> = ({ source, siteConfig, frontMatter }: Props) =
       <Container className="!pt-0">
         <div className="max-w-screen-md mx-auto ">
           <div className="text-center">
-            <CardRow card={frontMatter} />
+            <BackButton />
+            <CardRow listView={false} card={frontMatter} />
           </div>
           <div className="card-story">
             <MDXRemote components={components} {...source} />

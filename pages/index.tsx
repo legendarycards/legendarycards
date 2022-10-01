@@ -21,7 +21,7 @@ const Home: NextPage<Props> = ({ cards, siteConfig }: Props) => {
           <div className="text-center">
             {cards.map((card) => (
               <div key={card.slug}>
-                <CardRow card={card} />
+                <CardRow listView={true} card={card} />
               </div>
             ))}
           </div>
