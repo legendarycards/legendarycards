@@ -6,14 +6,16 @@ const Header: React.FC = () => {
 
   return (
     // header value
-    <header className="py-2">
 
-    <Link href="/">
-      <a className="text-2xl font-bold text-green-500">
-        Vintage Rare Cards
-      </a>
-    </Link>
-    </header>
+    <nav className="navbar navbar-light bg-light">
+      <div className="container-fluid">
+        <Link href="/">
+          <a className="navbar-brand" href="#">
+            Vintage Rare Cards
+          </a>
+        </Link>
+      </div>
+    </nav>
   )
   
 }

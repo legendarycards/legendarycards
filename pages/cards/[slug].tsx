@@ -4,10 +4,13 @@ import { useEffect } from 'react';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 import { useMdxComponentsContext } from '../../context/mdxContext';
-import Thumbnail from '../../components/Thumbnail';
+import CardRow from '../../components/CardRow';
 import { ICard } from '../../types/card';
 import { getCard, getAllCards } from '../../utils/mdxUtils';
 import { ParsedUrlQuery } from 'querystring';
+
+import Layout from '../../components/Layout';
+import Container from '../../components/Container';
 
 // import Prerequisites from '../../components/Prerequisites';
 // import Stacks from '../../components/Stacks';
@@ -15,6 +18,7 @@ import { ParsedUrlQuery } from 'querystring';
 // props type
 type Props = {
   source: MDXRemoteSerializeResult,
+  siteConfig?: any,
   frontMatter: Omit<ICard, 'slug'>;
 }
 
@@ -24,7 +28,7 @@ const components = {
   // Stacks,
 }
 
-const CardPage: React.FC<Props> = ({ source, frontMatter }: Props) => {
+const CardPage: React.FC<Props> = ({ source, siteConfig, frontMatter }: Props) => {
 
   // get setters
   // if we want to include elements to render on each card (likely)
@@ -43,20 +47,16 @@ const CardPage: React.FC<Props> = ({ source, frontMatter }: Props) => {
   ]);
 
   return (
-    <div>
-      <article className="prose prose-green">
-        <div className="mb-4">
-          <Thumbnail title={frontMatter.title} src={frontMatter.normalVersion} />
-          <Thumbnail title={frontMatter.title} src={frontMatter.rareVersion} />
+    <Layout {...siteConfig}>
+      <Container className="!pt-0">
+        <div className="max-w-screen-md mx-auto ">
+          <div className="text-center">
+            <CardRow card={frontMatter} />
+            <MDXRemote components={components} {...source} />
+          </div>
         </div>
-
-        <h1>{frontMatter.title}</h1>
-        <p>{frontMatter.description}</p>
-        <p>{frontMatter.category}</p>
-
-        <MDXRemote components={components} {...source} />
-      </article>
-    </div>
+      </Container>
+    </Layout>
   )
 }
 

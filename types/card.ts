@@ -1,5 +1,5 @@
 export interface ICard {
-  slug:string;
+  slug?:string;
   date:string;
 
   // Photos

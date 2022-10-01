@@ -1,17 +1,23 @@
 
 import type { AppProps } from 'next/app';
-import Layout from '../components/Layout';
-import 'tailwindcss/tailwind.css'
 import {MdxComponentsProvider} from '../context/mdxContext';
 
+//import '../styles/globals.css'
+//import '../styles/app.css'
+
+import { ThemeProvider } from "next-themes";
+import "../styles/tailwind.css";
+
 function MyApp({ Component, pageProps }: AppProps) {
-  return <MdxComponentsProvider>  <Layout>
-
-  <Component {...pageProps} />
-
-  </Layout>
-
-  </MdxComponentsProvider>
+  return (
+    <>
+      <MdxComponentsProvider>
+        <ThemeProvider attribute="class">
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </MdxComponentsProvider>
+    </>
+  );
 }
 
 export default MyApp

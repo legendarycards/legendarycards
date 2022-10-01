@@ -1,49 +1,33 @@
-import Thumbnail from '../components/Thumbnail';
+import CardRow from '../components/CardRow';
 import type { NextPage, GetStaticProps } from 'next'
 import { ICard } from "../types/card";
-import Link from 'next/link'
 import { getAllCards } from "../utils/mdxUtils";
+
+import Layout from '../components/Layout';
+import Container from '../components/Container';
 
 // props type
 type Props = {
-  cards: [ICard]
+  cards: [ICard],
+  siteConfig: any
 }
 
 // component render function
-const Home: NextPage<Props> = ({ cards }: Props) => {
+const Home: NextPage<Props> = ({ cards, siteConfig }: Props) => {
   return (
-    <div>
-      <h1 className="text-4xl font-bold mb-4">
-        Cards List
-      </h1>
-
-      <div className="space-y-12">
+    <Layout {...siteConfig}>
+      <Container>
+        <div className="max-w-screen-md mx-auto ">
+          <div className="text-center">
         {cards.map((card) => (
           <div key={card.slug}>
-            <div className="mb-4"> 
-              <Thumbnail
-                slug={card.slug}
-                title={card.title}
-                src={card.normalVersion}
-              />
-              <Thumbnail
-                slug={card.slug}
-                title={card.title}
-                src={card.rareVersion}
-              />
-            </div>
-
-            <h2 className="text-2xl font-bold mb-4">
-              <Link href={`/cards/${card.slug}`}>
-                <a>{card.title}</a>
-              </Link>
-            </h2>
-
-            <p>{card.description} {card.category}</p>
+            <CardRow card={card} />
           </div>
         ))}
-      </div>
-    </div>
+          </div>
+        </div>
+      </Container>
+    </Layout>
   )
 }
 

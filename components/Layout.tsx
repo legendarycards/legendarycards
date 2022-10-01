@@ -1,18 +1,26 @@
-import Header from './Header';
+// import Header from './Header';
+
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 type Props = {
   children: React.ReactNode;
 }
 
-const Layout: React.FC<Props> = ({children}: Props) => {
+const Layout: React.FC<Props> = (props: Props) => {
+  const navbarProps = {
+    logo: "/legendary.svg",
+    logoAlt: "/legendary.svg",
+  };
+
   return (
     <>
-    <div className="max-w-prose mx-auto px-4">
-      <Header />
-      <main className="pt-4 pb-12">
-        {children}
-      </main>
-    </div>
+      <div className="antialiased text-gray-800 dark:bg-black dark:text-gray-400">
+        <Navbar {...navbarProps} />
+        <div>{props.children}</div>
+
+        <Footer {...props} />
+      </div>
     </>
   )
 }
