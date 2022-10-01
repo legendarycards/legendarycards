@@ -20,7 +20,7 @@ const Navbar: React.FC<Props> = (props: Props) => {
   const rightmenu = [
     {
       label: "Github",
-      href: "https://github.com/vintagerare/vintagerare",
+      href: "https://github.com/legendarycards/legendarycards",
       external: true
     },
   ];
