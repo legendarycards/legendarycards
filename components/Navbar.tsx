@@ -45,9 +45,9 @@ const Navbar: React.FC<Props> = (props: Props) => {
                 </div>
                 <div className="flex justify-between items-center w-full md:w-auto">
                   <Link href="/">
-                    <a className="relative w-35 -top-3 sm:-top-4">
+                    <a className="relative w-35">
                       <Image
-                          src="/legendary.svg"
+                          src="/logo.svg"
                           alt="Logo"
                           width="350"
                           height="85"

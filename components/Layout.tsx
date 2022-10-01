@@ -9,8 +9,8 @@ type Props = {
 
 const Layout: React.FC<Props> = (props: Props) => {
   const navbarProps = {
-    logo: "/legendary.svg",
-    logoAlt: "/legendary.svg",
+    logo: "/logo.svg",
+    logoAlt: "/logo.svg",
   };
 
   return (
