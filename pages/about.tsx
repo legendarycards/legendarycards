@@ -30,6 +30,14 @@ const About: NextPage<Props> = ({ siteConfig }: Props) => {
             The email address <i>info at legendary dot cards</i> may be used to contact the project maintainers.
           </p>
         </div>
+        <h5 className="mt-2 mb-3 text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
+          Cards explicitly excluded
+        </h5>
+        <div className="mx-auto prose dark:prose-invert mt-14">
+          <ul>
+            <li><b>Illustrator Error Blastoise</b>: This is a printing error where the word &quot;Illus.&quot; and sometimes part of the &quot;K&quot; in the name &quot;Ken&quot; are not shown.</li>
+          </ul>
+        </div>
       </Container>
     </Layout>
   )

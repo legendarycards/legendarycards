@@ -26,3 +26,9 @@ yarn-error.log*
 .next
 out
 /work
+
+# no PNGs
+*.png
+*.jpg
+*.webp
+*.gif
