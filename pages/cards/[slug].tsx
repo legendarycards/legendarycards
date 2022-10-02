@@ -1,5 +1,7 @@
 import { serialize } from 'next-mdx-remote/serialize';
 import { GetStaticProps, GetStaticPaths } from 'next';
+import Head from 'next/head'
+
 import { useEffect } from 'react';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 
@@ -49,6 +51,12 @@ const CardPage: React.FC<Props> = ({ source, siteConfig, frontMatter }: Props) =
 
   return (
     <Layout {...siteConfig}>
+      <Head>
+        <title>legendary.cards: {frontMatter.title}</title>
+          <meta property="og:title" content={`legendary.cards: ${frontMatter.title}`} key="title" />
+          <meta name="description" content={`Card details: ${frontMatter.description}`} />
+          <meta property="og:description" content={`Card details: ${frontMatter.description}`} />
+      </Head>
       <Container className="!pt-0">
         <div className="max-w-screen-md mx-auto ">
           <div className="text-center">

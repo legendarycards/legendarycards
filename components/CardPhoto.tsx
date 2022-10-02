@@ -31,7 +31,7 @@ const CardPhoto: React.FC<Props> = ({ href, src, subtext }: Props) => {
       {image}
     </div>
   ) : (
-    <Link href={`cards/${href}`}>
+    <Link href={`${href}`}>
       <a>
         {image}
       </a>

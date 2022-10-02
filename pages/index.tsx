@@ -1,10 +1,12 @@
-import CardRow from '../components/CardRow';
 import type { NextPage, GetStaticProps } from 'next'
+import Head from 'next/head'
+
 import { ICard } from "../types/card";
 import { getAllCards } from "../utils/mdxUtils";
 
 import Layout from '../components/Layout';
 import Container from '../components/Container';
+import CardRow from '../components/CardRow';
 
 // props type
 type Props = {
@@ -14,12 +16,18 @@ type Props = {
 
 // component render function
 const Home: NextPage<Props> = ({ cards, siteConfig }: Props) => {
+  const title = "legendary.cards"
+  const description = "A curated list of rare Pokemon card variants that were published by Wizards of the Coast between 1999-2003."
+
   return (
     <Layout {...siteConfig}>
+      <Head>
+        <title>{title}</title>
+          <meta property="og:title" content={title} key="title" />
+          <meta name="description" content={description} />
+          <meta property="og:description" content={description} />
+      </Head>
       <Container>
-        <h1 className="mt-2 mb-3 text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
-          Card List
-        </h1>
         <div className="max-w-screen-md mx-auto ">
           <div className="text-center">
             {cards.map((card) => (
