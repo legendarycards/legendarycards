@@ -39,8 +39,29 @@ export function getCard(slug:string): Card {
   const fileContents = fs.readFileSync(fullPath, 'utf-8');
   // get the front matter data and content
   const {data, content} = matter(fileContents);
-  data['normalVersion'] = `cards/${slug}/normal.jpeg`;
-  data['rareVersion'] = `cards/${slug}/rare.jpeg`;
+
+  if (data['multi'] === true) {
+    // This is a group of cards.
+    // The first in the group will be the normal and rare displayed version.
+    const group = data['cards'].split(',').map((item:string) => item.trim());
+    if (group.length == 0) {
+      data['multi'] = false;
+    } else {
+      data['_normalVersion'] = `cards/${slug}/${group[0]}/normal.jpeg`;
+      data['_rareVersion'] = `cards/${slug}/${group[0]}/rare.jpeg`;
+      // Used to render the Carousel.
+      data['_group'] = group;
+      data['_groupPrefix'] = `cards/${slug}/`;
+      console.log(data['_groupPrefix']);
+    }
+  }
+
+  if (!data['multi']) {
+    data['_normalVersion'] = `cards/${slug}/normal.jpeg`;
+    data['_rareVersion'] = `cards/${slug}/rare.jpeg`;
+  
+  }
+
   // return the front matter data and content
   return {data, content};
 }
@@ -80,7 +101,11 @@ export function getAllCards(fields: string[]): Items []{
   // add paths for getting all cards 
   const filePaths = getCardsFilePaths();
   // get the cards from the filepaths with the needed fields sorted by date
-  const cards = filePaths.map((filePath) => getCardItems(filePath, fields)).sort((card1, card2) => parseInt(card1.value) < parseInt(card2.value) ? 1 : -1);
+  const cards = filePaths.map((filePath) =>
+    getCardItems(filePath, fields)
+  ).sort((card1, card2) =>
+    parseInt(card1.value) < parseInt(card2.value) ? 1 : -1
+  );
   // return the available card
   return cards;
 }

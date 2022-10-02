@@ -8,6 +8,8 @@ import CategoryBadge from "./CategoryBadge";
 import CardPhoto from './CardPhoto';
 import CardTitle from './CardTitle';
 
+import Carousel from './Carousel';
+
 import { ICard } from '../types/card.js';
 
 type Props = {
@@ -55,13 +57,20 @@ const CardRow: React.FC<Props> = ({ card, listView }: Props) => {
   // Only linkify if we are in the list view.
   const cardLink = (listView) ? `cards/${card.slug}` : "";
 
+  // Display either the two cards or a Carousel.
+  const images = (card._group == null || card._group.length == 0) ? (
+    <div className="grid gap-6 grid-cols-2 p-4">
+      <CardPhoto href={cardLink} src={card._normalVersion} subtext="Normal Version" />
+      <CardPhoto href={cardLink} src={card._rareVersion} subtext="Rare Version" />
+    </div>
+  ) : (
+    <Carousel group={card._group} groupPrefix={card._groupPrefix} groupLink={cardLink} />
+  );
+
   return (
     <>
-      <div className="group relative rounded-xl bg-slate-900 mb-8 p-8 pb-2">
-        <div className="grid gap-6 grid-cols-2 ">
-          <CardPhoto href={cardLink} src={card.normalVersion} subtext="Normal Version" />
-          <CardPhoto href={cardLink} src={card.rareVersion} subtext="Rare Version" />
-        </div>
+      <div className="group relative rounded-xl bg-slate-900 mb-8 p-4 pb-2">
+        {images}
         <CategoryBadge color={card.category} />
         <CardTitle href={cardLink} titleText={card.title} />
         {card.description && (

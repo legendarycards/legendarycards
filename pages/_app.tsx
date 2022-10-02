@@ -3,7 +3,8 @@ import type { AppProps } from 'next/app';
 import Script from 'next/script';
 import {MdxComponentsProvider} from '../context/mdxContext';
 
-import '../styles/globals.css'
+import '../styles/globals.css';
+import "../styles/carousel.css";
 
 import { ThemeProvider } from "next-themes";
 import "../styles/tailwind.css";

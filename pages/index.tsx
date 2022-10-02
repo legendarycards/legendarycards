@@ -51,8 +51,10 @@ export const getStaticProps: GetStaticProps = async () => {
     'slug',
     'value',
     'description',
-    'normalVersion',
-    'rareVersion',
+    '_normalVersion',
+    '_rareVersion',
+    '_group',
+    '_groupPrefix',
     'category',
     'set',
   ]);
