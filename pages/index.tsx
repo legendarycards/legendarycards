@@ -56,7 +56,6 @@ export const getStaticProps: GetStaticProps = async () => {
     'category',
     'set',
   ]);
-  console.log(cards);
 
   // return the cards props
   return { props: { cards } }
