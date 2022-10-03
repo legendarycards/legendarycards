@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useCallback, MouseEventHandler } from "react";
+import Image from "next/image.js";
+
 import useEmblaCarousel from "embla-carousel-react";
 import { prefix } from '../utils/prefix.js';
 
@@ -9,6 +11,8 @@ type ThumbProps = {
   onClick: MouseEventHandler<HTMLButtonElement>;
   imgSrc: string;
 }
+
+const rowSize = 5;
 
 const Thumb: React.FC<ThumbProps> = ({ selected, onClick, imgSrc }: ThumbProps) => (
   <div
@@ -21,7 +25,7 @@ const Thumb: React.FC<ThumbProps> = ({ selected, onClick, imgSrc }: ThumbProps) 
       className="embla__slide__inner embla__slide__inner--thumb"
       type="button"
     >
-      <img className="embla__slide__thumbnail" src={imgSrc} alt="A cool cat." />
+      <Image className="embla__slide__thumbnail" src={imgSrc} height={1005} width={700} />
     </button>
   </div>
 );
@@ -66,7 +70,7 @@ const Carousel: React.FC<Props> = ({ group, groupPrefix, groupLink }: Props) => 
   const groupRows = new Array<Array<number>>();
   var groupRow = new Array<number>();
   for (var i = 0; i < group.length; i++) {
-    if (i > 0 && i%5 == 0) {
+    if (i > 0 && i%rowSize == 0) {
       groupRows[groupRows.length] = groupRow;
       groupRow = new Array<number>();
     }
@@ -74,6 +78,13 @@ const Carousel: React.FC<Props> = ({ group, groupPrefix, groupLink }: Props) => 
   }
   if (groupRow.length > 0) {
     groupRows[groupRows.length] = groupRow;
+  }
+
+  // Fill in placeholder thumbnails.
+  const placeholder = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+  const buffer = new Array<number>();
+  for (var i = rowSize - groupRow.length; i > 0; i--) {
+    buffer[i-1] = 1000+i;
   }
 
   return (
@@ -113,6 +124,13 @@ const Carousel: React.FC<Props> = ({ group, groupPrefix, groupLink }: Props) => 
                   key={groupIndex}
                 />
               ))}
+              {(i == groupRows.length-1) ? buffer.map((index) => (
+                <div className="embla__slide embla__slide--thumb" key={index}>
+                  <Image className="embla__slide__thumbnail" src={placeholder} height={1005} width={700} />
+                </div>
+              )) : (
+                <></>
+              )}
             </div>
           ))}
         </div>
