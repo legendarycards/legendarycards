@@ -52,7 +52,6 @@ export function getCard(slug:string): Card {
       // Used to render the Carousel.
       data['_group'] = group;
       data['_groupPrefix'] = `cards/${slug}/`;
-      console.log(data['_groupPrefix']);
     }
   }
 

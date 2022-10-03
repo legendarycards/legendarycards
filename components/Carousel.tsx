@@ -37,13 +37,13 @@ const Carousel: React.FC<Props> = ({ group, groupPrefix, groupLink }: Props) => 
   const [mainViewportRef, embla] = useEmblaCarousel({ skipSnaps: false });
   const [thumbViewportRef, emblaThumbs] = useEmblaCarousel({
     containScroll: "keepSnaps",
+    draggable: false,
     // selectedClass: "",
     dragFree: true
   });
 
   const onThumbClick = useCallback(
     (index) => {
-      console.log(index);
       if (!embla || !emblaThumbs) return;
       if (emblaThumbs.clickAllowed()) embla.scrollTo(index);
     },
@@ -61,6 +61,20 @@ const Carousel: React.FC<Props> = ({ group, groupPrefix, groupLink }: Props) => 
     onSelect();
     embla.on("select", onSelect);
   }, [embla, onSelect]);
+
+  // Create rows for the thumbnails.
+  const groupRows = new Array<Array<number>>();
+  var groupRow = new Array<number>();
+  for (var i = 0; i < group.length; i++) {
+    if (i > 0 && i%5 == 0) {
+      groupRows[groupRows.length] = groupRow;
+      groupRow = new Array<number>();
+    }
+    groupRow[groupRow.length] = i;
+  }
+  if (groupRow.length > 0) {
+    groupRows[groupRows.length] = groupRow;
+  }
 
   return (
     <>
@@ -89,16 +103,18 @@ const Carousel: React.FC<Props> = ({ group, groupPrefix, groupLink }: Props) => 
 
       <div className="embla embla--thumb">
         <div className="embla__viewport" ref={thumbViewportRef}>
-          <div className="embla__container embla__container--thumb">
-            {group.map((name, index) => (
-              <Thumb
-                onClick={() => onThumbClick(index)}
-                selected={index === selectedIndex}
-                imgSrc={`${prefix}/${groupPrefix}/${name}/rare.jpeg`}
-                key={index}
-              />
-            ))}
-          </div>
+          {groupRows.map((groupRow, i) => (
+            <div className="embla__container embla__container--thumb" key={`group-row-${i}`}>
+              {groupRow.map((groupIndex) => (
+                <Thumb
+                  onClick={() => onThumbClick(groupIndex)}
+                  selected={groupIndex === selectedIndex}
+                  imgSrc={`${prefix}/${groupPrefix}/${group[groupIndex]}/rare.jpeg`}
+                  key={groupIndex}
+                />
+              ))}
+            </div>
+          ))}
         </div>
       </div>
     </>
