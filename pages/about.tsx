@@ -33,6 +33,10 @@ const About: NextPage<Props> = ({ siteConfig }: Props) => {
             Promotional cards are included except for the &quot;Black Star promo&quot; 54 card set.
           </p>
           <p className="text-lg">
+            At first this project is limited to regular-size print cards published in English.
+            This scope may be expanded in the future.
+          </p>
+          <p className="text-lg">
             This is an open source and community-driven project.
             Please read the README documentation on GitHub for more information on how to contribute content.
             The email address <i>info at legendary dot cards</i> may be used to contact the project maintainers.
