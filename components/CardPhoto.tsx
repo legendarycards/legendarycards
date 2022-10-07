@@ -8,10 +8,11 @@ import { prefix } from '../utils/prefix.js';
 type Props = {
     href?: string;
     src: string;
-    subtext: string
+    subText: string;
+    titleText: string;
 }
 
-const CardPhoto: React.FC<Props> = ({ href, src, subtext }: Props) => {
+const CardPhoto: React.FC<Props> = ({ href, src, subText, titleText }: Props) => {
   const dataUrl = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
 
   const image = (
@@ -23,6 +24,7 @@ const CardPhoto: React.FC<Props> = ({ href, src, subtext }: Props) => {
       blurDataURL={dataUrl}
       objectFit="cover"
       className="transition-all rounded-2xl"
+      alt={`${titleText}: ${subText}`}
     />
   )
 
@@ -44,7 +46,7 @@ const CardPhoto: React.FC<Props> = ({ href, src, subtext }: Props) => {
         {wrapper}
       </div>
       <div className="text-sm">
-        {subtext}
+        {subText}
       </div>
     </div>
   )

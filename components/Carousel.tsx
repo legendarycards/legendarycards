@@ -25,7 +25,7 @@ const Thumb: React.FC<ThumbProps> = ({ selected, onClick, imgSrc }: ThumbProps) 
       className="embla__slide__inner embla__slide__inner--thumb"
       type="button"
     >
-      <Image className="embla__slide__thumbnail" src={imgSrc} height={1005} width={700} />
+      <Image className="embla__slide__thumbnail" src={imgSrc} height={1005} width={700} alt="Card select thumbnail" />
     </button>
   </div>
 );
@@ -34,9 +34,10 @@ type Props = {
   group: Array<string>;
   groupPrefix: string;
   groupLink: string;
+  titleText: string;
 }
 
-const Carousel: React.FC<Props> = ({ group, groupPrefix, groupLink }: Props) => {
+const Carousel: React.FC<Props> = ({ group, groupPrefix, groupLink, titleText }: Props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [mainViewportRef, embla] = useEmblaCarousel({ skipSnaps: false });
   const [thumbViewportRef, emblaThumbs] = useEmblaCarousel({
@@ -102,8 +103,8 @@ const Carousel: React.FC<Props> = ({ group, groupPrefix, groupLink }: Props) => 
                   /> */}
 
                   <div className="grid gap-6 grid-cols-2 p-3">
-                    <CardPhoto href={groupLink} src={`${groupPrefix}/${name}/normal.jpeg`} subtext="Normal Version" />
-                    <CardPhoto href={groupLink} src={`${groupPrefix}/${name}/rare.jpeg`} subtext="Rare Version" />
+                    <CardPhoto href={groupLink} src={`${groupPrefix}/${name}/normal.jpeg`} subText="Normal Version" titleText={titleText} />
+                    <CardPhoto href={groupLink} src={`${groupPrefix}/${name}/rare.jpeg`} subText="Rare Version" titleText={titleText} />
                   </div>
                 </div>
               </div>
@@ -126,7 +127,7 @@ const Carousel: React.FC<Props> = ({ group, groupPrefix, groupLink }: Props) => 
               ))}
               {(i == groupRows.length-1) ? buffer.map((index) => (
                 <div className="embla__slide embla__slide--thumb" key={index}>
-                  <Image className="embla__slide__thumbnail" src={placeholder} height={1005} width={700} />
+                  <Image className="embla__slide__thumbnail" src={placeholder} height={1005} width={700} alt="" />
                 </div>
               )) : (
                 <></>

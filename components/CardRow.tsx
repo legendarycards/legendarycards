@@ -60,11 +60,11 @@ const CardRow: React.FC<Props> = ({ card, listView }: Props) => {
   // Display either the two cards or a Carousel.
   const images = (card._group == null || card._group.length == 0) ? (
     <div className="grid gap-6 grid-cols-2 p-4">
-      <CardPhoto href={cardLink} src={card._normalVersion} subtext="Normal Version" />
-      <CardPhoto href={cardLink} src={card._rareVersion} subtext="Rare Version" />
+      <CardPhoto href={cardLink} src={card._normalVersion} subText="Normal Version" titleText={card.title} />
+      <CardPhoto href={cardLink} src={card._rareVersion} subText="Rare Version" titleText={card.title}  />
     </div>
   ) : (
-    <Carousel group={card._group} groupPrefix={card._groupPrefix} groupLink={cardLink} />
+    <Carousel group={card._group} groupPrefix={card._groupPrefix} groupLink={cardLink} titleText={card.title} />
   );
 
   return (
