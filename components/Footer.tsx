@@ -12,8 +12,7 @@ const Footer: React.FC<Props> = ({copyright}: Props) => {
   return (
     <Container className="mt-10 border-t border-gray-100 dark:border-gray-800 p-2">
       <div className="text-sm text-center">
-      Copyright © {new Date().getFullYear()} {copyright}. All
-        rights reserved.
+      {copyright} claims no copyright, all content is provided for archive and reference.
       </div>
     </Container>
   )
