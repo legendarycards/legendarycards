@@ -25,3 +25,8 @@ blockquote p {
 .no-block {
   display: inline !important;
 }
+
+.row {
+  border: solid #202638;
+  border-width: 1px;
+}
