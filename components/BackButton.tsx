@@ -4,7 +4,7 @@ import Link from 'next/link';
 const BackButton: React.FC = () => {
 
   return (
-    <Link href="/">
+    <Link href="/" passHref>
       <div className="content align-middle mx-auto">
         <a>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="cursor-pointer no-block pt-2 w-10 h-10 mb-4 hover:text-sky-500 hover:scale-110">

@@ -28,14 +28,14 @@ const About: NextPage<Props> = ({ siteConfig }: Props) => {
           <p className="text-lg">
             This project seeks to document all Pokemon cards published by Wizards of the Coast up until the year 2003, which have some rare or non-standard property.
             Here &apos;legendary&apos; means the cards exsistance is not widely known and may even be disputed by experts.
-            Cards that have errors from the printing process, such as ink bubbles, overlays, or cutting and processing mistakes are not included.
+            Cards that have errors from inking and printing plate problems during printing process, such as ink bubbles, stains, overlays, or cutting and processing mistakes are not included.
             For a great list of observed printing errors and test production card variants see&nbsp;
             <Link href="">
               <a href="https://mt-moon.proboards.com/thread/20744/masters-guide-pokemon-corrected-errors">this list on Mt. Moon</a>
             </Link>.
             Cards that have errors from pre-printing, meaning typos and mistakes in layout, are included if the error was corrected.
             In situations where the corrected version is more rare than the error-version then this will be specified.
-            Promotional cards are included except for the &quot;Black Star promo&quot; 54 card set.
+            Promotional cards featuring a variant of an existing card are included except for the &quot;Best of Game&quot; and &quot;Energize your Game&quot; sets.
           </p>
           <p className="text-lg">
             At first this project is limited to regular-size print cards published in English.
