@@ -21,3 +21,7 @@ blockquote p {
 .card-story a:hover { /* text-sky-500 */
   color: rgb(14 165 233);
 }
+
+.no-block {
+  display: inline !important;
+}
