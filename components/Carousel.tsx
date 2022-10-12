@@ -12,7 +12,7 @@ type ThumbProps = {
   imgSrc: string;
 }
 
-const rowSize = 5;
+const rowSize = 8;
 
 const Thumb: React.FC<ThumbProps> = ({ selected, onClick, imgSrc }: ThumbProps) => (
   <div
