@@ -15,9 +15,11 @@ import { ICard } from '../types/card.js';
 type Props = {
     card: ICard;
     listView: boolean;
+    // If a search was used on the card list.
+    search?: string;
 }
 
-const CardRow: React.FC<Props> = ({ card, listView }: Props) => {
+const CardRow: React.FC<Props> = ({ card, listView, search }: Props) => {
   const dataUrl = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
 
   const additionalDetails = (
@@ -64,7 +66,7 @@ const CardRow: React.FC<Props> = ({ card, listView }: Props) => {
       <CardPhoto href={cardLink} src={card._rareVersion} subText="Rare Version" titleText={card.title}  />
     </div>
   ) : (
-    <Carousel group={card._group} groupPrefix={card._groupPrefix} groupLink={cardLink} titleText={card.title} />
+    <Carousel group={card._group} groupPrefix={card._groupPrefix} groupLink={cardLink} titleText={card.title} search={search} />
   );
 
   return (

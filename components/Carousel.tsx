@@ -35,15 +35,16 @@ type Props = {
   groupPrefix: string;
   groupLink: string;
   titleText: string;
+  // If a search was used on the list view.
+  search?: string;
 }
 
-const Carousel: React.FC<Props> = ({ group, groupPrefix, groupLink, titleText }: Props) => {
+const Carousel: React.FC<Props> = ({ group, groupPrefix, groupLink, titleText, search }: Props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [mainViewportRef, embla] = useEmblaCarousel({ skipSnaps: false });
   const [thumbViewportRef, emblaThumbs] = useEmblaCarousel({
     containScroll: "keepSnaps",
     draggable: false,
-    // selectedClass: "",
     dragFree: true
   });
 
@@ -88,6 +89,19 @@ const Carousel: React.FC<Props> = ({ group, groupPrefix, groupLink, titleText }:
     buffer[i-1] = 1000+i;
   }
 
+  useEffect(() => {
+    // Check if a specific card should be shown based on the search.
+    if (search != null && search.length > 0) {
+      for (var i = 0; i < group.length; i++) {
+        if (group[i].includes(search)) {
+          setSelectedIndex(i);
+          onThumbClick(i);
+          break;
+        }
+      }
+    }
+  }, [search]);
+
   return (
     <>
       <div className="embla">
@@ -96,12 +110,6 @@ const Carousel: React.FC<Props> = ({ group, groupPrefix, groupLink, titleText }:
             {group.map((name, index) => (
               <div className="embla__slide" key={index}>
                 <div className="embla__slide__inner">
-                  {/* <img
-                    className="embla__slide__img"
-                    src={mediaByIndex(index)}
-                    alt="A cool cat."
-                  /> */}
-
                   <div className="grid gap-6 grid-cols-2 p-3">
                     <CardPhoto href={groupLink} src={`${groupPrefix}/${name}/normal.jpeg`} subText="Normal Version" titleText={titleText} />
                     <CardPhoto href={groupLink} src={`${groupPrefix}/${name}/rare.jpeg`} subText="Rare Version" titleText={titleText} />
