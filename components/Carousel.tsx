@@ -100,7 +100,7 @@ const Carousel: React.FC<Props> = ({ group, groupPrefix, groupLink, titleText, s
         }
       }
     }
-  }, [search]);
+  }, [search, group, onThumbClick]);
 
   return (
     <>
