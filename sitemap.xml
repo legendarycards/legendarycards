@@ -52,6 +52,10 @@
     <changefreq>hourly</changefreq>
   </url>
 <url>
+    <loc>https://legendary.cards/cards/expedition-for-position-only</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+<url>
     <loc>https://legendary.cards/cards/fossil-cosmos-holos</loc>
     <changefreq>hourly</changefreq>
   </url>
