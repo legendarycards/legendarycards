@@ -52,7 +52,14 @@ const About: NextPage<Props> = ({ siteConfig }: Props) => {
         </h5>
         <div className="mx-auto prose dark:prose-invert mt-4">
           <ul>
-            <li><b>Illustrator Error Blastoise</b>: This is a printing error where the word &quot;Illus.&quot; and sometimes part of the &quot;K&quot; in the name &quot;Ken&quot; are not shown.</li>
+            <li>
+              <b>Illustrator Error Blastoise</b>:&nbsp;
+              This is a printing error where the word &quot;Illus.&quot; and sometimes part of the &quot;K&quot; in the name &quot;Ken&quot; are not shown.
+            </li>
+            <li>
+              <b>NYC Expedition Sample Cards</b>:&nbsp;
+              These cards are confirmed to be printed by the Japanese card printer Media Factory (not Wizards of the Coast).
+            </li>
           </ul>
         </div>
       </Container>
