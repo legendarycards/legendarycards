@@ -52,6 +52,10 @@
     <changefreq>hourly</changefreq>
   </url>
 <url>
+    <loc>https://legendary.cards/cards/base2-charizard-non-holo</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+<url>
     <loc>https://legendary.cards/cards/expedition-e3-testprint</loc>
     <changefreq>hourly</changefreq>
   </url>
