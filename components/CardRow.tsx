@@ -72,14 +72,14 @@ const CardRow: React.FC<Props> = ({ card, listView, search }: Props) => {
   return (
     <>
       <div className="group relative rounded-xl bg-slate-900 mb-8 p-4 pb-2 row">
-        {images}
-        <CategoryBadge color={card.category} />
         <CardTitle href={cardLink} titleText={card.title} />
         {card.description && (
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 line-clamp-3">
             {card.description}
           </p>
         )}
+        <CategoryBadge color={card.category} />
+        {images}
       </div>
     </>
   )

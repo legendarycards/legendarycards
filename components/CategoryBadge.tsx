@@ -17,7 +17,7 @@ const CategoryBadge: React.FC<Props> = (props: Props) => {
   const color = ColorMap.get(props.color as Category);
 
   return (
-    <span className={cx("inline-block mt-5 text-xs font-medium tracking-wider uppercase ", color)}>
+    <span className={cx("inline-block text-xs font-medium tracking-wider uppercase ", color)}>
       {props.color}
     </span>
   );

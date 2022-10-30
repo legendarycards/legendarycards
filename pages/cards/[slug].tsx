@@ -64,7 +64,9 @@ const CardPage: React.FC<Props> = ({ source, siteConfig, frontMatter }: Props) =
             <CardRow listView={false} card={frontMatter} />
           </div>
           <div className="card-story">
-            <MDXRemote components={components} {...source} />
+            <div className="group relative rounded-xl bg-slate-900 mb-8 p-4 pb-2 row">
+              <MDXRemote components={components} {...source} />
+            </div>
           </div>
         </div>
       </Container>

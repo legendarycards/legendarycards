@@ -40,7 +40,23 @@
     <changefreq>hourly</changefreq>
   </url>
 <url>
+    <loc>https://legendary.cards/cards/base-uk-print-2000-holos</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+<url>
     <loc>https://legendary.cards/cards/base-wartortle-error-evolution-box</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+<url>
+    <loc>https://legendary.cards/cards/expedition-e3-testprint</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+<url>
+    <loc>https://legendary.cards/cards/expedition-ereader-demo</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+<url>
+    <loc>https://legendary.cards/cards/expedition-for-position-only</loc>
     <changefreq>hourly</changefreq>
   </url>
 <url>
@@ -105,6 +121,10 @@
   </url>
 <url>
     <loc>https://legendary.cards/cards/promo-stamp-rally-nonholos</loc>
+    <changefreq>hourly</changefreq>
+  </url>
+<url>
+    <loc>https://legendary.cards/cards/promo-wb-kids-stamp-error</loc>
     <changefreq>hourly</changefreq>
   </url>
 <url>
