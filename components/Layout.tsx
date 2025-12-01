@@ -2,6 +2,7 @@
 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import Banner from "./Banner";
 
 type Props = {
   children: React.ReactNode;
@@ -16,6 +17,7 @@ const Layout: React.FC<Props> = (props: Props) => {
   return (
     <>
       <div className="antialiased text-gray-800 dark:bg-black dark:text-gray-400">
+        <Banner />
         <Navbar {...navbarProps} />
         <div>{props.children}</div>
 
