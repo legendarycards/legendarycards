@@ -18,29 +18,15 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Setup Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v4
       with:
-        node-version: '16'
-
-    - name: Cache node modules
-      id: cache-nodemodules
-      uses: actions/cache@v2
-      env:
-        cache-name: cache-node-modules
-      with:
-        # caching node_modules
-        path: node_modules
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-build-
-          ${{ runner.os }}-
+        node-version: '20'
+        cache: 'npm'
 
     - name: Install Dependencies
-      if: steps.cache-nodemodules.outputs.cache-hit != 'true'
       run: |
         npm ci
 
@@ -59,7 +45,7 @@ jobs:
 
     - name: Deploy
       if: success()
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./out
