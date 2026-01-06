@@ -28,7 +28,7 @@ out
 /work
 
 # no PNGs
+# *.webp
 *.png
 *.jpg
-*.webp
 *.gif
