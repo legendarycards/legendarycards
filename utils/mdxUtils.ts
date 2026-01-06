@@ -52,6 +52,12 @@ export function getCard(slug:string): Card {
       // Used to render the Carousel.
       data['_group'] = group;
       data['_groupPrefix'] = `cards/${slug}/`;
+      
+      // Parse topvault IDs if they exist
+      if (data['topvault']) {
+        const topvaultIds = data['topvault'].split(',').map((item:string) => item.trim());
+        data['_topvaultArray'] = topvaultIds;
+      }
     }
   }
 

@@ -37,4 +37,6 @@ export interface ICard {
 
   // Optional TopVault UUID for linking to TopVault app
   topvault?:string;
+  // Parsed array of TopVault UUIDs for multi-card groups
+  _topvaultArray?:Array<string>;
 }

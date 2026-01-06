@@ -37,9 +37,11 @@ type Props = {
   titleText: string;
   // If a search was used on the list view.
   search?: string;
+  // Callback to notify parent when selected card changes
+  onSelectedIndexChange?: (index: number) => void;
 }
 
-const Carousel: React.FC<Props> = ({ group, groupPrefix, groupLink, titleText, search }: Props) => {
+const Carousel: React.FC<Props> = ({ group, groupPrefix, groupLink, titleText, search, onSelectedIndexChange }: Props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [mainViewportRef, embla] = useEmblaCarousel({ skipSnaps: false });
   const [thumbViewportRef, emblaThumbs] = useEmblaCarousel({
@@ -58,9 +60,14 @@ const Carousel: React.FC<Props> = ({ group, groupPrefix, groupLink, titleText, s
 
   const onSelect = useCallback(() => {
     if (!embla || !emblaThumbs) return;
-    setSelectedIndex(embla.selectedScrollSnap());
-    emblaThumbs.scrollTo(embla.selectedScrollSnap());
-  }, [embla, emblaThumbs, setSelectedIndex]);
+    const newIndex = embla.selectedScrollSnap();
+    setSelectedIndex(newIndex);
+    emblaThumbs.scrollTo(newIndex);
+    // Notify parent component of the selection change
+    if (onSelectedIndexChange) {
+      onSelectedIndexChange(newIndex);
+    }
+  }, [embla, emblaThumbs, setSelectedIndex, onSelectedIndexChange]);
 
   useEffect(() => {
     if (!embla) return;
@@ -96,11 +103,15 @@ const Carousel: React.FC<Props> = ({ group, groupPrefix, groupLink, titleText, s
         if (group[i].includes(search)) {
           setSelectedIndex(i);
           onThumbClick(i);
+          // Notify parent component
+          if (onSelectedIndexChange) {
+            onSelectedIndexChange(i);
+          }
           break;
         }
       }
     }
-  }, [search, group, onThumbClick]);
+  }, [search, group, onThumbClick, onSelectedIndexChange]);
 
   return (
     <>

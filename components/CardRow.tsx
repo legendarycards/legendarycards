@@ -17,9 +17,11 @@ type Props = {
     listView: boolean;
     // If a search was used on the card list.
     search?: string;
+    // Callback to notify parent when selected card index changes (for multi-card groups)
+    onSelectedIndexChange?: (index: number) => void;
 }
 
-const CardRow: React.FC<Props> = ({ card, listView, search }: Props) => {
+const CardRow: React.FC<Props> = ({ card, listView, search, onSelectedIndexChange }: Props) => {
   const dataUrl = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
 
   const additionalDetails = (
@@ -66,7 +68,7 @@ const CardRow: React.FC<Props> = ({ card, listView, search }: Props) => {
       <CardPhoto href={cardLink} src={card._rareVersion} subText="Rare Version" titleText={card.title}  />
     </div>
   ) : (
-    <Carousel group={card._group} groupPrefix={card._groupPrefix} groupLink={cardLink} titleText={card.title} search={search} />
+    <Carousel group={card._group} groupPrefix={card._groupPrefix} groupLink={cardLink} titleText={card.title} search={search} onSelectedIndexChange={onSelectedIndexChange} />
   );
 
   return (

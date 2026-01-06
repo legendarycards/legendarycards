@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image';
 import { ExternalLinkIcon } from '@heroicons/react/outline';
 
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 import CardRow from '../../components/CardRow';
@@ -33,6 +33,8 @@ const components = {
 }
 
 const CardPage: React.FC<Props> = ({ source, siteConfig, frontMatter }: Props) => {
+  // Track the selected card index for multi-card groups
+  const [selectedCardIndex, setSelectedCardIndex] = useState(0);
 
   // get setters
   // if we want to include elements to render on each card (likely)
@@ -50,6 +52,11 @@ const CardPage: React.FC<Props> = ({ source, siteConfig, frontMatter }: Props) =
     // frontMatter.stacks
   ]);
 
+  // Get the current TopVault ID based on selected card index
+  const currentTopVaultId = frontMatter._topvaultArray 
+    ? frontMatter._topvaultArray[selectedCardIndex] 
+    : frontMatter.topvault;
+
   return (
     <Layout {...siteConfig}>
       <Head>
@@ -63,10 +70,10 @@ const CardPage: React.FC<Props> = ({ source, siteConfig, frontMatter }: Props) =
           <div className="text-center">
             <BackButton />
             <div className="relative">
-              <CardRow listView={false} card={frontMatter} />
-              {frontMatter.topvault && (
+              <CardRow listView={false} card={frontMatter} onSelectedIndexChange={setSelectedCardIndex} />
+              {currentTopVaultId && (
                 <a
-                  href={`https://vault.top/app/browse/pokemon-card/info/item/${frontMatter.topvault}`}
+                  href={`https://vault.top/app/browse/pokemon-card/info/item/${currentTopVaultId}`}
                   className="absolute top-2 right-2 inline-flex items-center gap-1.5 p-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md hover:from-blue-700 hover:to-purple-700 transition-all shadow-md hover:shadow-lg"
                   target="_blank"
                   title="View on TopVault" rel="noreferrer"
