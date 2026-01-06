@@ -5,7 +5,7 @@ module.exports = {
     unoptimized: true
   },
   webpack: (config, { isServer }) => {
-    if (isServer) {
+    if (config.mode != 'development' && isServer) {
       require('./scripts/generate-sitemap.js')
     }
 

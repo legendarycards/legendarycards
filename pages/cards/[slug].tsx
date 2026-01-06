@@ -1,11 +1,12 @@
 import { serialize } from 'next-mdx-remote/serialize';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head'
+import Image from 'next/image';
+import { ExternalLinkIcon } from '@heroicons/react/outline';
 
 import { useEffect } from 'react';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 
-import { useMdxComponentsContext } from '../../context/mdxContext';
 import CardRow from '../../components/CardRow';
 import { ICard } from '../../types/card';
 import { getCard, getAllCards } from '../../utils/mdxUtils';
@@ -62,6 +63,24 @@ const CardPage: React.FC<Props> = ({ source, siteConfig, frontMatter }: Props) =
           <div className="text-center">
             <BackButton />
             <CardRow listView={false} card={frontMatter} />
+            {frontMatter.topvault && (
+              <div className="mb-2">
+                <a
+                  href={`https://vault.top/app/browse/pokemon-card/${frontMatter.topvault}`}
+                  className="inline-flex items-center gap-2 px-2 py-2 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all shadow-md hover:shadow-lg"
+                >
+                  <Image 
+                    src="/topvault-48.webp" 
+                    alt="TopVault" 
+                    className="w-5 h-5 rounded"
+                    width={20}
+                    height={20}
+                  />
+                  <span className="font-semibold">View on TopVault</span>
+                  <ExternalLinkIcon className="w-4 h-4" />
+                </a>
+              </div>
+            )}
           </div>
           <div className="card-story">
             <div className="group relative rounded-xl bg-slate-900 mb-8 p-4 pb-2 row">

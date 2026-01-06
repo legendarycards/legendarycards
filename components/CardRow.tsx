@@ -71,7 +71,7 @@ const CardRow: React.FC<Props> = ({ card, listView, search }: Props) => {
 
   return (
     <>
-      <div className="group relative rounded-xl bg-slate-900 mb-8 p-4 pb-2 row">
+      <div className="group relative rounded-xl bg-slate-900 mb-4 p-4 pb-2 row">
         <CardTitle href={cardLink} titleText={card.title} />
         {card.description && (
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 line-clamp-3">

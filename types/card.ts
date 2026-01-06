@@ -34,4 +34,7 @@ export interface ICard {
   // Once cards is parsed then group and groupPrefix are available.
   _group:Array<string>;
   _groupPrefix:string;
+
+  // Optional TopVault UUID for linking to TopVault app
+  topvault?:string;
 }
